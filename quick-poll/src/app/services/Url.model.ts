@@ -1,4 +1,4 @@
-export const API_BASE_URL:string = 'http://localhost';
+export const API_BASE_URL:string = 'http://10.33.121.90';
 export const QuickPollUrls = (pollId:string ='',voteId:string='')=>{
     pollId = pollId ? `/${pollId}`:'';
     voteId = voteId ? `/${voteId}`:'';

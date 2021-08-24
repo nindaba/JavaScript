@@ -20,14 +20,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  login(){    
+  login(){  
     this.userService.login(this.loginForm.value).subscribe(reply=>{
       localStorage.setItem('Access-token','bearer '+reply.Access_token);
       this.authenticatedFailed = false;
-      this.router.navigate(['']);
+      this.router.navigateByUrl('/');
     },
       error =>{
         this.authenticatedFailed = true;
+        console.log(error)
       } 
       );
     

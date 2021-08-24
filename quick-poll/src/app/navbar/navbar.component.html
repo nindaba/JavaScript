@@ -2,15 +2,16 @@
     <div class="branding">
         <span class="title">QuickPoll</span>
     </div>
-    <div class="header-actions">
-        <a class="nav-link" (click)="openQuestion()">
-            <span><clr-icon shape="plus"></clr-icon>Question</span>
+    <div class="header-actions" style="display:flex; align-items:center;">
+        <a class="nav-link" (click)="openQuestion()" href="">
+            <span><clr-icon shape="plus"></clr-icon></span>
         </a>
         <a class="nav-link" routerLink="/">
-            Reload
+            <span>Reload</span>
         </a>
-        <a class="nav-link" routerLink="/user">
-            Login
+        <span>{{userService.loggedUser}}</span>
+        <a class="nav-link" (click)="logout()" *ngIf="userService.isLogin" style="cursor: pointer;">
+            <span>Logout</span>
         </a>
     </div>
     <div class="search">

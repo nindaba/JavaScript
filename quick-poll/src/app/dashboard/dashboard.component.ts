@@ -18,9 +18,9 @@ export class DashboardComponent implements OnInit {
   polls:Poll[]=[];
   ngOnInit(): void {
     this.loadPolls();
-    this.interval =setInterval(()=>{
-      this.loadPolls();
-    },5000);
+    // this.interval =setInterval(()=>{
+    //   this.loadPolls();
+    // },5000);
     
   }
   loadPolls(){

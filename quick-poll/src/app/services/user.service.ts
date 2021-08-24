@@ -1,15 +1,17 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import jwtDecode from 'jwt-decode';
 import { Observable } from 'rxjs';
 import { LOGIN_URL, USER_URL } from './Url.model';
 import { UserModel } from './User.model';
-
+interface TokenModule{Roles: string[],exp: number,iat: number,iss: string,sub: string}
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private http:HttpClient) { }
+  loggedUser:string ='';
+  constructor(private http:HttpClient,private router:Router) { }
   register(user:UserModel){
     return this.http.post(USER_URL,user);
   }
@@ -24,5 +26,19 @@ export class UserService {
     let headers:HttpHeaders= new HttpHeaders({'Content-type':'application/x-www-form-urlencoded'})
     return this.http.post<{Access_token:string}>(LOGIN_URL,body,{headers:headers});        
   }
-  
+  logout(){
+    localStorage.setItem('Access-token','');
+    this.router.navigate(['user']);
+    this.loggedUser='';
+  }
+  get isLogin():boolean{
+    let token:string = localStorage.getItem('Access-token')||'';
+    if(token){
+      let decoded_token:TokenModule = jwtDecode<TokenModule>(token);
+      this.loggedUser = decoded_token.sub.split(' ')[0];
+      let expDate:Date = new Date(decoded_token.exp*1000);
+      return expDate > new Date();
+    }
+    return false;
+  }
 }

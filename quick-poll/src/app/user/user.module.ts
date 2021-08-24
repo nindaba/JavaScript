@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { LoginComponent } from './login/login.component';
 const routes :Routes =[
   {path:'register' , component: RegisterComponent},
-  {path:'' ,redirectTo:'/user/login'},
+  {path:'' ,redirectTo:'/user/login',pathMatch:"full"},
   {path:'login' ,component: LoginComponent}
 ];
 
