@@ -26,6 +26,6 @@ export class QuickDataService {
     this.http.delete(this.QUICK_POLL_URI(id).polls).subscribe();
   }
   load(){
-    return this.http.get<Array<Poll>>(this.QUICK_POLL_URI().polls);
+    return this.http.get<Array<Poll>>(this.QUICK_POLL_URI().polls+'?userId=""');
   }
 }

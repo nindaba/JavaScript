@@ -1,13 +1,13 @@
 <header class="header header-2">
     <div class="branding">
-        <span class="title">QuickPoll</span>
+        <a class="title nav-link" routerLink="/">QuickPoll</a>
     </div>
     <div class="header-actions" style="display:flex; align-items:center;">
-        <a class="nav-link" (click)="openQuestion()" href="">
-            <span><clr-icon shape="plus"></clr-icon></span>
+        <a class="btn-link btn nav-link" (click)="openQuestion()" title="Add Question" style="cursor: pointer;">
+            <clr-icon shape="plus"></clr-icon>
         </a>
         <a class="nav-link" routerLink="/">
-            <span>Reload</span>
+            <span>Performance</span>
         </a>
         <span>{{userService.loggedUser}}</span>
         <a class="nav-link" (click)="logout()" *ngIf="userService.isLogin" style="cursor: pointer;">
