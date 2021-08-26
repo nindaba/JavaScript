@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pet, Trainee } from 'src/app/services/models';
+import { PetService } from 'src/app/services/pet.service';
 import { pets } from 'src/app/services/scalData';
 
 @Component({
@@ -8,9 +9,9 @@ import { pets } from 'src/app/services/scalData';
   styleUrls: ['./pet-card.component.css']
 })
 export class PetCardComponent implements OnInit {
-  pet:Pet = pets[0];
-  trainee:Trainee = pets[0].trainee[0];
-  constructor() { }
+  @Input() pet:Pet = pets[0];
+  trainee:Trainee = pets[0].trainee;
+  constructor(private service:PetService) { }
 
   ngOnInit(): void {
     this.pet = pets[0];

@@ -4,7 +4,7 @@ export interface Pet{
     age:number;
     image:string;
     owner:Person;
-    trainee:Trainee[];
+    trainee:Trainee;
     breed:string;
     started:Date;
     passed:string[];

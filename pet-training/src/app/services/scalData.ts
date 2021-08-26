@@ -22,7 +22,7 @@ export const pets : Pet[] =[
             email:'ardy@gmail.com',
             address:'Muyinga,Kibogoye 11,12-321'
         },
-        trainee:[
+        trainee:
             {
                 id:'1',
                 details:{
@@ -36,7 +36,7 @@ export const pets : Pet[] =[
                 trannings:4,
                 rates:4.5
             }
-        ],
+        ,
         breed:'Bulldog',
         started:new Date(),
         passed:[
