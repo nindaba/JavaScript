@@ -1,8 +1,9 @@
 //Packages imports 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatCardModule} from '@angular/material/card'
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {MatCardModule} from '@angular/material/card';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 //Material
 import {MatGridListModule} from '@angular/material/grid-list'
 import {MatButtonModule} from '@angular/material/button'
@@ -22,6 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PetformComponent } from './components/petform/petform.component';
 import { PetService } from './services/pet.service';
+import { PersonService } from './services/person.service';
 
 @NgModule({
   declarations: [
@@ -46,9 +48,9 @@ import { PetService } from './services/pet.service';
     ReactiveFormsModule,
     MatListModule,
     MatChipsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [PetService],
+  providers: [PetService,PersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
