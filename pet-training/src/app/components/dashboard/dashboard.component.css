@@ -1,0 +1,12 @@
+mat-grid-list{
+    max-width: 80%;
+}
+.spacer{
+    flex:1 1 auto;
+    font-size: medium;
+}
+mat-form-field{
+    width:50%;
+    min-width: 100px;
+    
+}
