@@ -3,12 +3,11 @@
         <mat-card >
             <mat-card-title>
                 <span>New Pet</span>
+                
             </mat-card-title>
             <mat-card-content align="start">
+                <img mat-card-lg-image [src]="image" *ngIf="image">
                 <mat-list>
-                    <mat-list-item>
-                        <img mat-card-lg-image [src]="image" *ngIf="false">
-                    </mat-list-item>
                     <mat-list-item>
                         <input type="file" #imagePicker accept="image/png,image/jpeg" (change)="fileChanged($event)" color="primary" style="display:none;">
                         <button mat-button (click)= "imagePicker.click()" color="primary">Choose Pet Image</button>
