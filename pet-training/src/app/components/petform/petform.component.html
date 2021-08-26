@@ -1,5 +1,5 @@
 <div align="center">
-    <form>
+    <form [formGroup]="petForm" (ngSubmit)="addPet()">
         <mat-card >
             <mat-card-title>
                 <span>New Pet</span>
@@ -7,69 +7,48 @@
             </mat-card-title>
             <mat-card-content align="start">
                 <img mat-card-lg-image [src]="image" *ngIf="image">
-                <mat-list>
-                    <mat-list-item>
-                        <input type="file" #imagePicker accept="image/png,image/jpeg" (change)="fileChanged($event)" color="primary" style="display:none;">
-                        <button mat-button (click)= "imagePicker.click()" color="primary">Choose Pet Image</button>
-                    </mat-list-item>
-                    
-                    <mat-list-item>
-                        <mat-form-field>                            
-                            <input matInput placeholder="Pet Name">
+                <input type="file" #imagePicker accept="image/png,image/jpeg" (change)="fileChanged($event)" color="primary" style="display:none;">
+                <button mat-button (click)= "imagePicker.click()" color="primary">Choose Pet Image</button>
+                <mat-form-field>                            
+                    <input formControlName="name" matInput placeholder="Pet Name">
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="breed" matInput placeholder="breed">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput formControlName="age" placeholder="Pet Age" type="number">
+                </mat-form-field>
+                <mat-form-field>
+                            <input matInput formControlName="owner" [matAutocomplete]="personComplete" placeholder="search owner by username">
+                            <mat-autocomplete #personComplete="matAutocomplete">
+                                <mat-option *ngFor="let own of owners" [value] = "own.username">
+                                    {{own.username}}
+                                </mat-option>
+                            </mat-autocomplete>
                         </mat-form-field>
-                    </mat-list-item>  
-                    <p></p>                  
-                    <mat-list-item>
-                        <mat-form-field>
-                            <input matInput placeholder="breed">
-                        </mat-form-field>
-                    </mat-list-item>
-                    <p></p>
-                    <mat-list-item>
-                        <mat-form-field>
-                            <input matInput placeholder="Pet Age" type="date">
-                        </mat-form-field>
-                    </mat-list-item>
-                    <p></p>
-                    <mat-list-item>
-                        <mat-form-field>
-                            <input matInput placeholder="search owner by full name">
-                        </mat-form-field>
-                        <button mat-button color="primary">New Owner</button>
-
-                    </mat-list-item>
-                    <p></p>
-                    <mat-list-item>
-                        <mat-form-field>
-                            <input matInput placeholder="search Trainee by full name">
-                        </mat-form-field>
-                    </mat-list-item>
-                    <mat-list-item>
-                        hello
-                    </mat-list-item>
-                    <p></p>
-                    <mat-list-item>
-                        <mat-form-field>
-                            <input matInput placeholder="Subject">
-                        </mat-form-field>
-                    </mat-list-item>
-                    <p></p>
-                    <mat-list-item>
-                        <mat-chip-list>
-                            <mat-chip>Hello</mat-chip>
-                            <mat-chip>Hello</mat-chip>
-                            <mat-chip>Hello X</mat-chip>
-                        </mat-chip-list>
-                    </mat-list-item>                    
-                </mat-list>
+                        <button mat-button color="primary" >New Owner</button>
+                <mat-form-field>
+                    <input matInput formControlName="trainee" [matAutocomplete]="traineeAuto" placeholder="search Trainee by username">
+                    <mat-autocomplete #traineeAuto="matAutocomplete">
+                        <mat-option *ngFor="let trainer of trainees" [value]= "trainer.details.username">
+                            {{trainer.details.username}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-chip-list>
+                    <mat-form-field>
+                        <input matInput formControlName="subjects"  placeholder="Subject">
+                        <mat-chip *ngFor="let chip of subjectsChips" [value]="chip">{{chip}}</mat-chip>
+                    </mat-form-field>
+                </mat-chip-list>   
             </mat-card-content>
             <mat-card-actions align="end">
                 <a mat-button color="warn"routerLink="/">
                     Cancel
                 </a>
-                <a mat-button color="primary">
+                <button mat-button color="primary" type="submit" [disabled]= "petForm.invalid">
                     Add
-                </a>
+                </button>
             </mat-card-actions>
         </mat-card>
     </form>

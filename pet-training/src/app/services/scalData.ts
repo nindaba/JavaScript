@@ -16,8 +16,7 @@ export const pets : Pet[] =[
         age:3,
         image:'https://www.thesprucepets.com/thmb/FEsGt1xpqpRi_YzoMCuzPEWcvso=/872x654/smart/filters:no_upscale()/1024px-Bulldog_inglese-cf544d354159462c8c0d93db5f1adbe6.jpg',
         owner:{
-            id:'1',
-            fullName:'Ardy Divin',
+            username:'Ardy Divin',
             phoneNumber:'+257 696785577',
             email:'ardy@gmail.com',
             address:'Muyinga,Kibogoye 11,12-321'
@@ -26,8 +25,7 @@ export const pets : Pet[] =[
             {
                 id:'1',
                 details:{
-                    id:'3',
-                    fullName:'John Wick',
+                    username:'John Wick',
                     phoneNumber:'+(318) 319 4342 21',
                     email:'john@wick.com',
                     address:'LA 1212,21-31121'
@@ -39,7 +37,7 @@ export const pets : Pet[] =[
         ,
         breed:'Bulldog',
         started:new Date(),
-        passed:[
+        completed:[
             'Electronic',
             'Model-rival',],
         subjects:[
@@ -47,26 +45,24 @@ export const pets : Pet[] =[
             'Electronic',
             'Model-rival',
             'Dominance-based',]
-    }
+    },
+    JSON.parse('{"name":"litle pow","age":1,"owner":{"username":"ArdyDivin","phoneNumber":"+257 696785577","email":"ardy@gmail.com","address":"Muyinga,Kibogoye 11,12-321"},"trainee":{"id":"1","details":{"username":"JohnWick","phoneNumber":"+(318) 319 4342 21","email":"john@wick.com","address":"LA 1212,21-31121"},"started":"2021-08-26T21:41:37.325Z","trannings":4,"rates":4.5},"breed":"chiwawa","subjects":["li","hd","lean","gfjd"],"image":"https://www.google.com/search/static/gs/animal/cover_images/m0bt9lr_cover.png","completed":[]}')
 ]
 export const people :Person[]=[
     {
-        id:'1',
-        fullName:'Ardy Divin',
+        username:'ArdyDivin',
         phoneNumber:'+257 696785577',
         email:'ardy@gmail.com',
         address:'Muyinga,Kibogoye 11,12-321'
     },
     {
-        id:'2',
-        fullName:'Kibuguzo',
+        username:'Kibuguzo',
         phoneNumber:'+257 3212577',
         email:'ardy@gmail.com',
         address:'Muyinga,Kinogo 01,21-221'
     },
     {
-        id:'3',
-        fullName:'John Wick',
+        username:'JohnWick',
         phoneNumber:'+(318) 319 4342 21',
         email:'john@wick.com',
         address:'LA 1212,21-31121'
@@ -77,8 +73,7 @@ export const trainees:Trainee[]=[
     {
         id:'1',
         details:{
-            id:'3',
-            fullName:'John Wick',
+            username:'JohnWick',
             phoneNumber:'+(318) 319 4342 21',
             email:'john@wick.com',
             address:'LA 1212,21-31121'

@@ -1,7 +1,10 @@
 form{
-    max-width: 60%;
+    max-width: 50%;
 }
 mat-form-field{
     width:80%;
     min-width: 100px;
+}
+mat-list-item{
+    width:80%;
 }

@@ -2,16 +2,16 @@
     <mat-card-title>
         <span>{{pet.name}}</span>
     </mat-card-title>
-    <img mat-card-image src="{{pet.image}}">
+    <img mat-card-image [src]="{{pet.image}}" height="170">
     <mat-card-content>
-        <p>Owned by {{pet.owner.fullName}}</p>
-        <p>Trained by {{trainee.details.fullName}}</p>
-        <mat-progress-bar mode="determinate" value="65"></mat-progress-bar>
+        <p>Owned by {{pet.owner.username}}</p>
+        <p>Trained by {{trainee.details.username}}</p>
+        <mat-progress-bar mode="determinate" value="{{process}}"></mat-progress-bar>
         <p></p>
-        <p>Training 65%</p>
+        <p>Training {{process}}</p>
     </mat-card-content>
     <mat-card-actions>
-        <a mat-button color="primary" target="_blank">
+        <a mat-button color="primary">
             Details
         </a>
     </mat-card-actions>

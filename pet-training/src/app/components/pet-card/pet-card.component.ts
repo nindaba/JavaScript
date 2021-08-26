@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Pet, Trainee } from 'src/app/services/models';
 import { PetService } from 'src/app/services/pet.service';
-import { pets } from 'src/app/services/scalData';
 
 @Component({
   selector: 'app-pet-card',
@@ -9,12 +8,16 @@ import { pets } from 'src/app/services/scalData';
   styleUrls: ['./pet-card.component.css']
 })
 export class PetCardComponent implements OnInit {
-  @Input() pet:Pet = pets[0];
-  trainee:Trainee = pets[0].trainee;
+  @Input() pet:Pet|any;
+  trainee:Trainee|any;
   constructor(private service:PetService) { }
 
   ngOnInit(): void {
-    this.pet = pets[0];
+    this.trainee = this.pet.trainee;
+    console.log(JSON.stringify(this.pet))
   }
-
+  get process():number{
+    return this.pet.completed.length*100/this.pet.subjects.length
+  }
+  
 }

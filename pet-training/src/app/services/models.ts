@@ -7,12 +7,11 @@ export interface Pet{
     trainee:Trainee;
     breed:string;
     started:Date;
-    passed:string[];
+    completed:string[];
     subjects:string[];
 }
 export interface Person{
-    id:string;
-    fullName:string;
+    username:string;
     phoneNumber:string;
     email:string;
     address:string;

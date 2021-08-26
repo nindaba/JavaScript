@@ -19,10 +19,9 @@
         </mat-toolbar>
         
     </header>
-    <mat-grid-list cols="3" rowHeight="250px" *ngFor="let pet of pets">
-        <mat-grid-tile rowspan="2">
+    <mat-grid-list cols="3" rowHeight="250px" >
+        <mat-grid-tile [rowspan]="2" *ngFor="let pet of pets">
             <app-pet-card [pet]="pet"></app-pet-card>
         </mat-grid-tile>
-        
     </mat-grid-list>    
 </div>
