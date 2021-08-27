@@ -13,7 +13,7 @@ export class PetCardComponent implements OnInit {
   constructor(private service:PetService) { }
 
   ngOnInit(): void {
-    console.log(this.pet)
+    // console.log(this.pet)
 
     // trainer property as it would be long in the template
     this.trainer = this.pet.trainer;

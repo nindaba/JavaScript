@@ -3,7 +3,8 @@
     <form [formGroup]="personForm">
         <mat-form-field>
             <input matInput formControlName="username" placeholder="username">
-        </mat-form-field>
+            <mat-error *ngIf="personForm.get('username')?.getError('person')">username taken</mat-error>
+        </mat-form-field>    
         <mat-form-field>
             <input matInput formControlName="email" placeholder="email">
         </mat-form-field>

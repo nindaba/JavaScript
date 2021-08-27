@@ -28,6 +28,7 @@ import { PetService } from './services/pet.service';
 import { PersonService } from './services/person.service';
 import { PersonFormComponent } from './components/person-form/person-form.component';
 import { TrainerFormComponent } from './components/trainer-form/trainer-form.component';
+import { TrainerService } from './services/trainer.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { TrainerFormComponent } from './components/trainer-form/trainer-form.com
     MatAutocompleteModule,
     MatDividerModule,
   ],
-  providers: [PetService,PersonService],
+  providers: [PetService,PersonService,TrainerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

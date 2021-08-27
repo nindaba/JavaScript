@@ -1,8 +1,11 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Person, Trainer } from 'src/app/services/models';
 import { PersonService } from 'src/app/services/person.service';
 import { PetService } from 'src/app/services/pet.service';
+import { TrainerService } from 'src/app/services/trainer.service';
 import { PersonFormComponent } from '../person-form/person-form.component';
 
 @Component({
@@ -31,7 +34,9 @@ export class PetformComponent implements OnInit {
     private petService:PetService,
     private personService:PersonService,
     private formBuilder : FormBuilder,
-    private resolver: ComponentFactoryResolver) {
+    private resolver: ComponentFactoryResolver,
+    private trainerService:TrainerService,
+    private router :Router) {
     this.petForm = this.formBuilder.group({
     name:['',Validators.required],
     age:['',Validators.required],
@@ -51,18 +56,17 @@ export class PetformComponent implements OnInit {
     this.petForm.get('owner')?.valueChanges.subscribe((name:string)=>{
        // condition as when saved values will change and come empty causing errors
       if(name){
-        this.owners = this.personService.getPeopleByName(name);
-        if(this.owners) this.petForm.get('owner')?.setErrors(null);
+        this.owners = this.personService.searchPeopleByName(name);
+        if(this.owners.length !==0) this.petForm.get('owner')?.setErrors(null);
         else this.petForm.get('owner')?.setErrors({nowners:true})
       }
     });
     this.petForm.get('trainer')?.valueChanges.subscribe((name:string)=>{
       // condition as when saved values will change and come empty causing errors
       if(name){
-        this.trainers = this.personService.getTrainersByName(name);
-        if(this.trainers) this.petForm.get('trainer')?.setErrors(null);
+        this.trainers = this.trainerService.searchTrainersByName(name);
+        if(this.trainers.length !== 0 ) this.petForm.get('trainer')?.setErrors(null);
         else this.petForm.get('trainer')?.setErrors({notrainer:true})
-        console.log(this.petForm.get('trainer')?.getError('notrainer'))
       }
     })
     //add a subject as a chip using ,
@@ -71,8 +75,7 @@ export class PetformComponent implements OnInit {
         this.subjectsChips.push(subject.substring(0,subject.length-1));
         this.petForm.get('subjects')?.setValue ('');
         // then we clear validators because we nolonger need them 
-        this.petForm.get('subjects')?.clearValidators();
-        this.petForm.get('subjects')?.clearAsyncValidators();
+        this.petForm.get('subjects')?.setErrors(null);
       }
     });
   }
@@ -114,7 +117,9 @@ export class PetformComponent implements OnInit {
     if(this.newPersonRef){
       this.newPersonRef.destroy();
     }
-    this.petForm.reset();
+    this.petForm.reset();    
     this.subjectsChips = [];
+    //we go home
+    this.router.navigate(['']);
   }
 }

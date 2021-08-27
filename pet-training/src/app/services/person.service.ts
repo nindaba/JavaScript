@@ -7,20 +7,19 @@ import { people, trainers } from './scalData';
 })
 export class PersonService {
   people:Person[];
-  trainers:Trainer[];
+  
   constructor() { 
     this.people = people;
-    this.trainers = trainers;
+
   }
-  getPeopleByName(name:string):Person[]{
+  searchPeopleByName(name:string):Person[]{
     const nameRegex:RegExp = new RegExp(name.toLowerCase());
     return this.people
     .filter((person:Person) => nameRegex.test(person.username.toLowerCase()));
   }
-  getTrainersByName(name:string):Trainer[]{
-    const nameRegex:RegExp = new RegExp(name.toLowerCase());
-    return this.trainers
-    .filter((trainer:Trainer) => nameRegex.test(trainer.details.username.toLowerCase()));
+  getPersonByName(name:string){
+    return this.people
+    .filter((person:Person) => person.username.toLowerCase() === name.toLowerCase())[0];
   }
 
   addPerson(person:Person){

@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   set search(@Input('search') search1){
     this._search = search1;
     if(this.search) this.pets = this.service.getAllPets().filter(pet => this.service.petMatches(pet,this.search));
+    else this.pets = this.service.getAllPets();
   }
   get search(){
     return this._search;

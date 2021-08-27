@@ -7,7 +7,7 @@ import { TrainerFormComponent } from './components/trainer-form/trainer-form.com
 
 const routes: Routes = [
   {path:'add-pet',component:PetformComponent},
-  {path:'add-trainee',component:TrainerFormComponent},
+  {path:'add-trainer',component:TrainerFormComponent},
   {path:'',redirectTo:'/dashboard',pathMatch:'full'},
   {path:'dashboard',component:DashboardComponent},
 ];

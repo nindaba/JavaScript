@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonService } from 'src/app/services/person.service';
+import { TrainerService } from 'src/app/services/trainer.service';
 
 @Component({
   selector: 'app-person-form',
@@ -13,6 +14,7 @@ export class PersonFormComponent implements OnInit {
   constructor(
     private formBuilder:FormBuilder,
     private personService:PersonService,
+    private trainerService:TrainerService,
     private router :Router,
     private activateRoute:ActivatedRoute) 
     {
@@ -25,10 +27,12 @@ export class PersonFormComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.personForm.get('person')?.valueChanges.subscribe((name:string)=>{
-      let personFound = this.personService.getPeopleByName(name);
-      if(personFound) this.personForm.get('person')?.setErrors({person:true})
-      else this.personForm.get('person')?.setErrors(null);
+    this.personForm.get('username')?.valueChanges.subscribe((name:string)=>{
+      if(name) {
+        let personFound = this.personService.getPersonByName(name) || this.trainerService.getTrainerByName(name);
+        if(personFound) this.personForm.get('username')?.setErrors({person:true});
+        else this.personForm.get('username')?.setErrors(null);
+    }
     });
   }
   cancel(){

@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Pet } from './models';
 import { PersonService } from './person.service';
 import { pets } from './scalData';
+import { TrainerService } from './trainer.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PetService {
   pets:Pet[] =[];
-  constructor(private personService:PersonService) {
+  constructor(private personService:PersonService,private trainerService:TrainerService) {
     // Innitialize Pets "(*_*) dummy HttpClient"
     this.pets = pets;
   }
@@ -32,10 +33,10 @@ export class PetService {
   }
   addPet(pet:any,subjects:string[]){
     //Replace the Owner name with owner object
-    pet.owner = this.personService.getPeopleByName(pet.owner)[0];
+    pet.owner = this.personService.searchPeopleByName(pet.owner)[0];
     
     //Replace th Yrainer name with Trainer Object
-    pet.trainer = this.personService.getTrainersByName(pet.trainer)[0];
+    pet.trainer = this.trainerService.searchTrainersByName(pet.trainer)[0];
 
     pet.subjects = subjects||[]; 
 
