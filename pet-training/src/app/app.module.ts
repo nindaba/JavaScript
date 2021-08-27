@@ -16,6 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatListModule} from '@angular/material/list'
 import {MatChipsModule} from '@angular/material/chips'
 import {MatAutocompleteModule} from '@angular/material/autocomplete'
+import {MatDividerModule} from '@angular/material/divider'
 // Generated Imports 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PetformComponent } from './components/petform/petform.component';
 import { PetService } from './services/pet.service';
 import { PersonService } from './services/person.service';
-import { UserFormComponent } from './components/user-form/user-form.component';
+import { PersonFormComponent } from './components/person-form/person-form.component';
+import { TraineeFormComponent } from './components/trainee-form/trainee-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     PetCardComponent,
     DashboardComponent,
     PetformComponent,
-    UserFormComponent
+    PersonFormComponent,
+    TraineeFormComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     MatChipsModule,
     FormsModule,
     MatAutocompleteModule,
+    MatDividerModule,
   ],
   providers: [PetService,PersonService],
   bootstrap: [AppComponent]

@@ -46,7 +46,34 @@ export const pets : Pet[] =[
             'Model-rival',
             'Dominance-based',]
     },
-    JSON.parse('{"name":"litle pow","age":1,"owner":{"username":"ArdyDivin","phoneNumber":"+257 696785577","email":"ardy@gmail.com","address":"Muyinga,Kibogoye 11,12-321"},"trainee":{"id":"1","details":{"username":"JohnWick","phoneNumber":"+(318) 319 4342 21","email":"john@wick.com","address":"LA 1212,21-31121"},"started":"2021-08-26T21:41:37.325Z","trannings":4,"rates":4.5},"breed":"chiwawa","subjects":["li","hd","lean","gfjd"],"image":"https://www.google.com/search/static/gs/animal/cover_images/m0bt9lr_cover.png","completed":[]}')
+    {
+        id:'2',
+        name:"litle pow",
+        age:1,
+        owner:{
+            username:"ArdyDivin",
+            phoneNumber:"+257 696785577",
+            email:"ardy@gmail.com",
+            address:"Muyinga,Kibogoye 11,12-321"
+        },
+        trainee:{
+            id:"1",
+            details:{
+                username:"JohnWick",
+                phoneNumber:"+(318) 319 4342 21",
+                email:"john@wick.com",
+                address:"LA 1212,21-31121"
+            },
+            started:new Date(),
+            trannings:4,
+            rates:4.5
+        },
+        breed:"chiwawa",
+        subjects:["li","hd","lean","gfjd"],
+        image:"https://www.google.com/search/static/gs/animal/cover_images/m0bt9lr_cover.png",
+        completed:[],
+        started:new Date()
+    }
 ]
 export const people :Person[]=[
     {

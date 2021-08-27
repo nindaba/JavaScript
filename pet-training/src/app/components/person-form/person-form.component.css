@@ -1,0 +1,11 @@
+/* form{
+    max-width: 50%;
+}
+
+mat-list-item{
+    width:80%;
+} */
+mat-form-field{
+    width:80%;
+    min-width: 100px;
+}

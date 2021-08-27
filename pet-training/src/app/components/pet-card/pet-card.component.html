@@ -2,7 +2,7 @@
     <mat-card-title>
         <span>{{pet.name}}</span>
     </mat-card-title>
-    <img mat-card-image [src]="{{pet.image}}" height="170">
+    <img mat-card-image [src]="pet.image" height="170">
     <mat-card-content>
         <p>Owned by {{pet.owner.username}}</p>
         <p>Trained by {{trainee.details.username}}</p>
@@ -15,7 +15,7 @@
             Details
         </a>
     </mat-card-actions>
-    <mat-card-footer>
-        Sarted Training {{pet.started}}
-    </mat-card-footer>
+    <!-- <mat-card-footer>
+        Sarted Training {{pet.started|date:'medium'}}
+    </mat-card-footer> -->
 </mat-card>

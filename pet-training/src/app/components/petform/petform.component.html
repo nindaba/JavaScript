@@ -8,7 +8,7 @@
             <mat-card-content align="start">
                 <img mat-card-lg-image [src]="image" *ngIf="image">
                 <input type="file" #imagePicker accept="image/png,image/jpeg" (change)="fileChanged($event)" color="primary" style="display:none;">
-                <button mat-button (click)= "imagePicker.click()" color="primary">Choose Pet Image</button>
+                <button mat-button (click)= "imagePicker.click()" type="button" color="primary">Choose Pet Image</button>
                 <mat-form-field>                            
                     <input formControlName="name" matInput placeholder="Pet Name">
                 </mat-form-field>
@@ -18,15 +18,21 @@
                 <mat-form-field>
                     <input matInput formControlName="age" placeholder="Pet Age" type="number">
                 </mat-form-field>
-                <mat-form-field>
+                <mat-form-field *ngIf="!newPersonRef">
                             <input matInput formControlName="owner" [matAutocomplete]="personComplete" placeholder="search owner by username">
                             <mat-autocomplete #personComplete="matAutocomplete">
                                 <mat-option *ngFor="let own of owners" [value] = "own.username">
                                     {{own.username}}
                                 </mat-option>
                             </mat-autocomplete>
-                        </mat-form-field>
-                        <button mat-button color="primary" >New Owner</button>
+                </mat-form-field>
+                <button mat-button color="primary" type="button" (click)="newPersonForm()" *ngIf="!newPersonRef" >New Owner</button>
+                <mat-divider></mat-divider>
+                <p></p>
+                <span *ngIf="newPersonRef">Owner Details</span>
+                <ng-template #newPerson></ng-template>                
+                <mat-divider></mat-divider>
+                <p></p>
                 <mat-form-field>
                     <input matInput formControlName="trainee" [matAutocomplete]="traineeAuto" placeholder="search Trainee by username">
                     <mat-autocomplete #traineeAuto="matAutocomplete">
@@ -35,6 +41,7 @@
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
+                
                 <mat-chip-list>
                     <mat-form-field>
                         <input matInput formControlName="subjects"  placeholder="Subject">
@@ -46,7 +53,10 @@
                 <a mat-button color="warn"routerLink="/">
                     Cancel
                 </a>
-                <button mat-button color="primary" type="submit" [disabled]= "petForm.invalid">
+                <a mat-button color="secondary" (click)="reset()">
+                    Reset
+                </a>
+                <button mat-button color="primary" type="submit" [disabled]= "petForm.invalid  || personInvalid">
                     Add
                 </button>
             </mat-card-actions>

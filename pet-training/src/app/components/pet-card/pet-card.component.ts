@@ -13,8 +13,10 @@ export class PetCardComponent implements OnInit {
   constructor(private service:PetService) { }
 
   ngOnInit(): void {
+    console.log(this.pet)
+
+    // trainee property as it would be long in the template
     this.trainee = this.pet.trainee;
-    console.log(JSON.stringify(this.pet))
   }
   get process():number{
     return this.pet.completed.length*100/this.pet.subjects.length

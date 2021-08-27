@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Person, Trainee } from 'src/app/services/models';
 import { PersonService } from 'src/app/services/person.service';
 import { PetService } from 'src/app/services/pet.service';
+import { PersonFormComponent } from '../person-form/person-form.component';
 
 @Component({
   selector: 'app-petform',
@@ -10,6 +11,9 @@ import { PetService } from 'src/app/services/pet.service';
   styleUrls: ['./petform.component.css']
 })
 export class PetformComponent implements OnInit {
+  @ViewChild('newPerson',{read: ViewContainerRef})
+  newPersonContainerRef: ViewContainerRef|any;
+  newPersonRef: ComponentRef<PersonFormComponent>|any;
   subjectsChips:string[]=[];
   trainees:Trainee[] = []
   owners:Person[] = [];
@@ -23,7 +27,11 @@ export class PetformComponent implements OnInit {
   get traineeSearch():string{
     return this._traineeSearch;
   }
-  constructor(private petService:PetService,private personService:PersonService,private formBuilder : FormBuilder) {
+  constructor(
+    private petService:PetService,
+    private personService:PersonService,
+    private formBuilder : FormBuilder,
+    private resolver: ComponentFactoryResolver) {
     this.petForm = this.formBuilder.group({
     name:['',Validators.required],
     age:['',Validators.required],
@@ -31,7 +39,7 @@ export class PetformComponent implements OnInit {
     trainee:['',Validators.required],
     breed:['',Validators.required],
     subjects:['',Validators.required],
-    image :[this.image]
+    image :['']
     })
   }
 
@@ -41,26 +49,32 @@ export class PetformComponent implements OnInit {
     // if not available we set the form to ivalid 
 
     this.petForm.get('owner')?.valueChanges.subscribe((name:string)=>{
-      this.owners = this.personService.getPeopleByName(name);
-      if(this.owners) this.petForm.get('owner')?.setErrors(null);
-      else this.petForm.get('owner')?.setErrors({nowners:true})
+       // condition as when saved values will change and come empty causing errors
+      if(name){
+        this.owners = this.personService.getPeopleByName(name);
+        if(this.owners) this.petForm.get('owner')?.setErrors(null);
+        else this.petForm.get('owner')?.setErrors({nowners:true})
+      }
     });
     this.petForm.get('trainee')?.valueChanges.subscribe((name:string)=>{
-      this.trainees = this.personService.getTraineesByName(name);
-      if(this.trainees) this.petForm.get('trainee')?.setErrors(null);
-      else this.petForm.get('trainee')?.setErrors({notrainee:true})
-      console.log(this.petForm.get('trainee')?.getError('notrainee'))
+      // condition as when saved values will change and come empty causing errors
+      if(name){
+        this.trainees = this.personService.getTraineesByName(name);
+        if(this.trainees) this.petForm.get('trainee')?.setErrors(null);
+        else this.petForm.get('trainee')?.setErrors({notrainee:true})
+        console.log(this.petForm.get('trainee')?.getError('notrainee'))
+      }
     })
-    //add a chip as a subject is added 
+    //add a subject as a chip using ,
     this.petForm.get('subjects')?.valueChanges.subscribe((subject:string)=>{
-      if(subject.endsWith(',')) {
+      if(subject?.endsWith(',') && subject) {
         this.subjectsChips.push(subject.substring(0,subject.length-1));
         this.petForm.get('subjects')?.setValue ('');
         // then we clear validators because we nolonger need them 
         this.petForm.get('subjects')?.clearValidators();
         this.petForm.get('subjects')?.clearAsyncValidators();
       }
-    })
+    });
   }
   fileChanged(event:any){
     let reader:FileReader = new FileReader();
@@ -71,19 +85,36 @@ export class PetformComponent implements OnInit {
     }
   }
   addPet(){
+    if(this.newPersonRef){
+      let username:string = this.newPersonRef.instance.personForm.value.username;
+      this.petForm.get('owner')?.setValue(username);
+      this.personService.addPerson(this.newPersonRef.instance.personForm.value);
+    }
+    //we add the image
+    this.petForm.value.image = this.image;
+    //Submit
     this.petService.addPet(this.petForm.value,this.subjectsChips);
-
-    //submitted
     // console.log(this.petService.getAllPets())
 
     // clean Values;
-    this.petForm = this.formBuilder.group({
-      name:['',Validators.required],
-      age:['',Validators.required],
-      owner:['',Validators.required],
-      trainee:['',Validators.required],
-      breed:['',Validators.required],
-      subjects:['',Validators.required],
-      })
+    this.reset();
+  }
+  newPersonForm(){
+    let component = this.resolver.resolveComponentFactory(PersonFormComponent);
+    this.newPersonRef = this.newPersonContainerRef.createComponent(component);
+    this.petForm.get('owner')?.setErrors(null);
+  }
+  get personInvalid():boolean{
+    if(this.newPersonRef){
+      return this.newPersonRef.instance.personForm.invalid;
+    }
+    return false;
+  }
+  reset(){
+    if(this.newPersonRef){
+      this.newPersonRef.destroy();
+    }
+    this.petForm.reset();
+    this.subjectsChips = [];
   }
 }

@@ -44,6 +44,11 @@ export class PetService {
 
     // initialy it start training the day registered
     pet.started = new Date();
+
+    // add Id but it would be added by server, UUId would be better but it comes with extracost of package
+  
+    pet.id = pet.name+Math.random()*10000
+
     //make a post call
     this.pets.push(pet);
   }
