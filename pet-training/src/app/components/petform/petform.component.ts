@@ -1,6 +1,6 @@
 import { Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Person, Trainee } from 'src/app/services/models';
+import { Person, Trainer } from 'src/app/services/models';
 import { PersonService } from 'src/app/services/person.service';
 import { PetService } from 'src/app/services/pet.service';
 import { PersonFormComponent } from '../person-form/person-form.component';
@@ -15,17 +15,17 @@ export class PetformComponent implements OnInit {
   newPersonContainerRef: ViewContainerRef|any;
   newPersonRef: ComponentRef<PersonFormComponent>|any;
   subjectsChips:string[]=[];
-  trainees:Trainee[] = []
+  trainers:Trainer[] = []
   owners:Person[] = [];
   petForm :FormGroup;
   image:string='https://www.google.com/search/static/gs/animal/cover_images/m0bt9lr_cover.png';
-  trainee:Trainee|undefined;
-  private _traineeSearch:string ='';
-  set traineeSearch(@Input('traineeSearch') search){
-    this._traineeSearch = search;
+  trainer:Trainer|undefined;
+  private _trainerSearch:string ='';
+  set trainerSearch(@Input('trainerSearch') search){
+    this._trainerSearch = search;
   }
-  get traineeSearch():string{
-    return this._traineeSearch;
+  get trainerSearch():string{
+    return this._trainerSearch;
   }
   constructor(
     private petService:PetService,
@@ -36,7 +36,7 @@ export class PetformComponent implements OnInit {
     name:['',Validators.required],
     age:['',Validators.required],
     owner:['',Validators.required],
-    trainee:['',Validators.required],
+    trainer:['',Validators.required],
     breed:['',Validators.required],
     subjects:['',Validators.required],
     image :['']
@@ -56,13 +56,13 @@ export class PetformComponent implements OnInit {
         else this.petForm.get('owner')?.setErrors({nowners:true})
       }
     });
-    this.petForm.get('trainee')?.valueChanges.subscribe((name:string)=>{
+    this.petForm.get('trainer')?.valueChanges.subscribe((name:string)=>{
       // condition as when saved values will change and come empty causing errors
       if(name){
-        this.trainees = this.personService.getTraineesByName(name);
-        if(this.trainees) this.petForm.get('trainee')?.setErrors(null);
-        else this.petForm.get('trainee')?.setErrors({notrainee:true})
-        console.log(this.petForm.get('trainee')?.getError('notrainee'))
+        this.trainers = this.personService.getTrainersByName(name);
+        if(this.trainers) this.petForm.get('trainer')?.setErrors(null);
+        else this.petForm.get('trainer')?.setErrors({notrainer:true})
+        console.log(this.petForm.get('trainer')?.getError('notrainer'))
       }
     })
     //add a subject as a chip using ,

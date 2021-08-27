@@ -4,7 +4,7 @@ export interface Pet{
     age:number;
     image:string;
     owner:Person;
-    trainee:Trainee;
+    trainer:Trainer;
     breed:string;
     started:Date;
     completed:string[];
@@ -16,7 +16,7 @@ export interface Person{
     email:string;
     address:string;
 }
-export interface Trainee{
+export interface Trainer{
     id:string;
     details:Person;
     started:Date;

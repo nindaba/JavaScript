@@ -1,4 +1,4 @@
-import { Person, Pet, Trainee } from "./models"
+import { Person, Pet, Trainer } from "./models"
 
 export const trainings:string[]=[
     'Koehler',
@@ -21,7 +21,7 @@ export const pets : Pet[] =[
             email:'ardy@gmail.com',
             address:'Muyinga,Kibogoye 11,12-321'
         },
-        trainee:
+        trainer:
             {
                 id:'1',
                 details:{
@@ -56,7 +56,7 @@ export const pets : Pet[] =[
             email:"ardy@gmail.com",
             address:"Muyinga,Kibogoye 11,12-321"
         },
-        trainee:{
+        trainer:{
             id:"1",
             details:{
                 username:"JohnWick",
@@ -96,7 +96,7 @@ export const people :Person[]=[
     },
 
 ]
-export const trainees:Trainee[]=[
+export const trainers:Trainer[]=[
     {
         id:'1',
         details:{

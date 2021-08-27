@@ -1,8 +1,8 @@
 <div align="center">
-    <form [formGroup]="personForm" (ngSubmit) = "addTrainne()">
+    <form (ngSubmit) = "addTrainer()">
         <mat-card>
             <mat-card-title>
-                <span>Register Trainee</span>
+                <span>Register Trainer</span>
             </mat-card-title>
             <mat-card-content>
                 <app-person-form #personForm></app-person-form>
@@ -10,7 +10,7 @@
             <mat-card-actions>
                 <button mat-button type="button" color="warn" (click)="cancel()">Cancel</button>
                 <button mat-button type="button" color="secondary" (click)="reset()">Cancel</button>
-                <button mat-button type="submit" color="primary" [disabled]="invalid">Cancel</button>
+                <button mat-button type="submit" color="primary" [disabled]="invalid">Register</button>
             </mat-card-actions>
         </mat-card>
     </form>

@@ -34,9 +34,9 @@
                 <mat-divider></mat-divider>
                 <p></p>
                 <mat-form-field>
-                    <input matInput formControlName="trainee" [matAutocomplete]="traineeAuto" placeholder="search Trainee by username">
-                    <mat-autocomplete #traineeAuto="matAutocomplete">
-                        <mat-option *ngFor="let trainer of trainees" [value]= "trainer.details.username">
+                    <input matInput formControlName="trainer" [matAutocomplete]="trainerAuto" placeholder="search Trainer by username">
+                    <mat-autocomplete #trainerAuto="matAutocomplete">
+                        <mat-option *ngFor="let trainer of trainers" [value]= "trainer.details.username">
                             {{trainer.details.username}}
                         </mat-option>
                     </mat-autocomplete>

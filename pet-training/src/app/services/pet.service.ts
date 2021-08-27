@@ -20,13 +20,13 @@ export class PetService {
     // find a pet with the given id
     return this.pets.filter((pet:Pet) => pet.id === id)[0];
   }
-  //this function will search in the name of the pet , breed , owner and trainee
+  //this function will search in the name of the pet , breed , owner and trainer
   petMatches(pet:Pet,regex:string):boolean{
     const search: RegExp = new RegExp(regex.toLowerCase());
     return(
       search.test(pet.name.toLowerCase()) || 
       search.test(pet.owner.username.toLowerCase()) ||
-      search.test(pet.trainee.details.username.toLowerCase()) ||
+      search.test(pet.trainer.details.username.toLowerCase()) ||
       search.test(pet.breed.toLowerCase())
     )
   }
@@ -34,8 +34,8 @@ export class PetService {
     //Replace the Owner name with owner object
     pet.owner = this.personService.getPeopleByName(pet.owner)[0];
     
-    //Replace th Yrainee name with Trainee Object
-    pet.trainee = this.personService.getTraineesByName(pet.trainee)[0];
+    //Replace th Yrainer name with Trainer Object
+    pet.trainer = this.personService.getTrainersByName(pet.trainer)[0];
 
     pet.subjects = subjects||[]; 
 

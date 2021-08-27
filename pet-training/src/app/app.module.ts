@@ -27,7 +27,7 @@ import { PetformComponent } from './components/petform/petform.component';
 import { PetService } from './services/pet.service';
 import { PersonService } from './services/person.service';
 import { PersonFormComponent } from './components/person-form/person-form.component';
-import { TraineeFormComponent } from './components/trainee-form/trainee-form.component';
+import { TrainerFormComponent } from './components/trainer-form/trainer-form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { TraineeFormComponent } from './components/trainee-form/trainee-form.com
     DashboardComponent,
     PetformComponent,
     PersonFormComponent,
-    TraineeFormComponent
+    TrainerFormComponent
   ],
   imports: [
     BrowserModule,

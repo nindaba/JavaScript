@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { PersonFormComponent } from '../person-form/person-form.component';
 
 @Component({
-  selector: 'app-trainee-form',
-  templateUrl: './trainee-form.component.html',
-  styleUrls: ['./trainee-form.component.css']
+  selector: 'app-trainer-form',
+  templateUrl: './trainer-form.component.html',
+  styleUrls: ['./trainer-form.component.css']
 })
-export class TraineeFormComponent implements OnInit {
+export class TrainerFormComponent implements OnInit {
   @ViewChild('personForm') personForm : PersonFormComponent|any;
   constructor(private router:Router) { }
 
@@ -22,7 +22,7 @@ export class TraineeFormComponent implements OnInit {
   cancel(){
     this.router.navigate(['']);
   }
-  addTrainne(){
+  addTrainer(){
     console.log( this.personForm.personForm.value)
   }
 }

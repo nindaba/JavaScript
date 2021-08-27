@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Pet, Trainee } from 'src/app/services/models';
+import { Pet, Trainer } from 'src/app/services/models';
 import { PetService } from 'src/app/services/pet.service';
 
 @Component({
@@ -9,14 +9,14 @@ import { PetService } from 'src/app/services/pet.service';
 })
 export class PetCardComponent implements OnInit {
   @Input() pet:Pet|any;
-  trainee:Trainee|any;
+  trainer:Trainer|any;
   constructor(private service:PetService) { }
 
   ngOnInit(): void {
     console.log(this.pet)
 
-    // trainee property as it would be long in the template
-    this.trainee = this.pet.trainee;
+    // trainer property as it would be long in the template
+    this.trainer = this.pet.trainer;
   }
   get process():number{
     return this.pet.completed.length*100/this.pet.subjects.length
