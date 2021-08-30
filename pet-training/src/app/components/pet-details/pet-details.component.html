@@ -1,0 +1,81 @@
+<div align="center">
+    <mat-card class="content" align="start" justfy="start">
+        <mat-card-title>
+            <mat-toolbar>
+                <span>{{pet?.name}}</span>
+                <div class="spacer"></div>
+                <a mat-button (click)="saveChanges()">Save</a>
+            </mat-toolbar>
+        </mat-card-title>
+        <mat-card-content>
+            <mat-grid-list cols="2" class="grid-list">
+                <mat-grid-tile [rowspan]="2">
+                    <div mat-grid-tile-content>
+                        <img mat-card-lg-image [src]="pet?.image">
+                        <p></p>
+                        <p>Age {{pet?.age}}</p>
+                        <p>Breed {{pet?.breed}}</p>
+                        <p>Started {{pet?.started|date:'medium'}}</p>
+                        <p></p>
+                        <h2 class="icon-title"><mat-icon>subject</mat-icon> Subjects </h2>
+                        <div class="subjects">
+                            <table>
+                                <tbody>
+                                    <tr *ngFor="let subject of pet?.subjects||[]">
+                                        <td>
+                                            <mat-checkbox [(ngModel)]="subject.isCompleted" color="primary">{{subject.name}}</mat-checkbox>
+                                        </td>
+                                        <td>
+                                            <button mat-icon-button color="warn" (click)="removeSubject(subject)">
+                                                <mat-icon>delete</mat-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <mat-form-field>
+                                                <input matInput placeholder="subject" type="text" [(ngModel)] = "newSubject">
+                                            </mat-form-field>
+                                        </td>
+                                        <td>
+                                            <button mat-icon-button color="primary" (click)="addSubject()">
+                                                <mat-icon>add</mat-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>    
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile [rowspan]="2">
+                    <div mat-grid-tile-content>
+                        <mat-card class="owner">
+                            <mat-card-title>
+                                <h2 class="icon-title"><mat-icon>person</mat-icon> Owner Details </h2>
+                            </mat-card-title>
+                            <mat-card-content>
+                                <p>Username {{pet?.owner?.username}}</p>
+                                <p>Email {{pet?.owner?.email}}</p>
+                                <p>Phone Number {{pet?.owner?.phoneNumber}}</p>
+                                <p>Address {{pet?.owner?.email}}</p>
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-card class="trainer">
+                            <mat-card-title>
+                                <h2 class="icon-title"><mat-icon>person</mat-icon> Trainer Details </h2>
+                            </mat-card-title>
+                            <mat-card-content>
+                                <p>Username {{pet?.trainer?.details?.username}}</p>
+                                <p>Email {{pet?.trainer?.details?.email}}</p>
+                                <p>Phone Number {{pet?.trainer?.details?.phoneNumber}}</p>
+                                <p>Address {{pet?.trainer?.details?.email}}</p>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -19,7 +19,8 @@ export class PetCardComponent implements OnInit {
     this.trainer = this.pet.trainer;
   }
   get process():number{
-    return this.pet.completed.length*100/this.pet.subjects.length
+    let completedCount = this.pet.subjects.filter((subject: { name:string;isCompleted: boolean; })=>subject.isCompleted).length;
+    return completedCount*100/this.pet.subjects.length
   }
   
 }

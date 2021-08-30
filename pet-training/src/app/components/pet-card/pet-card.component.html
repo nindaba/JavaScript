@@ -11,7 +11,7 @@
         <p>Training {{process}}</p>
     </mat-card-content>
     <mat-card-actions>
-        <a mat-button color="primary">
+        <a mat-button color="primary" [routerLink]="['','pet',pet.id]">
             Details
         </a>
     </mat-card-actions>

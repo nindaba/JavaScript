@@ -7,8 +7,7 @@ export interface Pet{
     trainer:Trainer;
     breed:string;
     started:Date;
-    completed:string[];
-    subjects:string[];
+    subjects:{name:string,isCompleted:boolean}[];
 }
 export interface Person{
     username:string;

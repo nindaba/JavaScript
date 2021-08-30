@@ -33,15 +33,17 @@ export class PetService {
   }
   addPet(pet:any,subjects:string[]){
     //Replace the Owner name with owner object
+    
     pet.owner = this.personService.searchPeopleByName(pet.owner)[0];
     
     //Replace th Yrainer name with Trainer Object
     pet.trainer = this.trainerService.searchTrainersByName(pet.trainer)[0];
 
-    pet.subjects = subjects||[]; 
+    pet.subjects = subjects.map(sub=>{
+      return {name:sub,isCompleted:false}
+    }) || []; 
 
-    //initial completed is 0
-    pet.completed = [];
+
 
     // initialy it start training the day registered
     pet.started = new Date();
@@ -52,5 +54,15 @@ export class PetService {
 
     //make a post call
     this.pets.push(pet);
+  }
+  updatePet(updatePet:Pet){
+    // this.http.put(url/updatePet.id,updatePet) 
+
+    let index = pets.findIndex(pet=>pet.id===updatePet.id);
+    if(index > -1) {
+      pets[index] = updatePet;
+      this.pets = pets;
+    }
+
   }
 }

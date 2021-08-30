@@ -1,1 +1,23 @@
+<header align="center">
+    <mat-toolbar>
+        <span >
+            Pet Training
+        </span>
+        <div class="spacer">
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="search" placeholder="/search">
+            </mat-form-field>
+        </div>
+        <a mat-button  routerLink="/">
+            Pets
+        </a>
+        <a mat-button  routerLink="/add-pet">
+            Add Pet
+        </a>
+        <a mat-button routerLink="/add-trainer">
+            Add Trainer
+        </a>
+    </mat-toolbar>
+    
+</header>
 <router-outlet></router-outlet>

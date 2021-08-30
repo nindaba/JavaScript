@@ -37,14 +37,11 @@ export const pets : Pet[] =[
         ,
         breed:'Bulldog',
         started:new Date(),
-        completed:[
-            'Electronic',
-            'Model-rival',],
         subjects:[
-            'Clicker',
-            'Electronic',
-            'Model-rival',
-            'Dominance-based',]
+            {name:'Clicker',isCompleted:false},
+            {name:'Electronic',isCompleted:true},
+            {name:'Model-rival',isCompleted:true},
+            {name:'Dominance-based',isCompleted:false}]
     },
     {
         id:'2',
@@ -69,9 +66,12 @@ export const pets : Pet[] =[
             rates:4.5
         },
         breed:"chiwawa",
-        subjects:["li","hd","lean","gfjd"],
+        subjects:[
+            {name:"li",isCompleted:false},
+            {name:"hd",isCompleted:false},
+            {name:"lean",isCompleted:false},
+            {name:"gfjd",isCompleted:false}],
         image:"https://www.google.com/search/static/gs/animal/cover_images/m0bt9lr_cover.png",
-        completed:[],
         started:new Date()
     }
 ]

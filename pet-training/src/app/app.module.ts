@@ -17,6 +17,7 @@ import {MatListModule} from '@angular/material/list'
 import {MatChipsModule} from '@angular/material/chips'
 import {MatAutocompleteModule} from '@angular/material/autocomplete'
 import {MatDividerModule} from '@angular/material/divider'
+import {MatCheckboxModule} from '@angular/material/checkbox'
 // Generated Imports 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,9 @@ import { PersonService } from './services/person.service';
 import { PersonFormComponent } from './components/person-form/person-form.component';
 import { TrainerFormComponent } from './components/trainer-form/trainer-form.component';
 import { TrainerService } from './services/trainer.service';
+import { PetDetailsComponent } from './components/pet-details/pet-details.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { TrainerService } from './services/trainer.service';
     DashboardComponent,
     PetformComponent,
     PersonFormComponent,
-    TrainerFormComponent
+    TrainerFormComponent,
+    PetDetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -58,8 +64,9 @@ import { TrainerService } from './services/trainer.service';
     FormsModule,
     MatAutocompleteModule,
     MatDividerModule,
+    MatCheckboxModule,
   ],
-  providers: [PetService,PersonService,TrainerService],
+  providers: [PetService,PersonService,TrainerService,SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

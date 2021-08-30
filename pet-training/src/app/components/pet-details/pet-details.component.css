@@ -1,0 +1,32 @@
+.content{
+    max-width: 70%;
+}
+img {
+    margin-top: 30px;
+}
+ul{
+    list-style-type: none;
+}
+.trainer,.owner{
+    border-left: solid 2px rgb(27, 26, 26);
+    padding-left: 10px;
+    width: 300px;
+    margin:16px 0 0 16px;
+}
+.spacer{
+    flex:1 1 auto;
+    font-size: small;
+}
+.icon-title{
+    display: flex;
+    align-items: center;
+}
+.grid-list{
+    height: 100%;
+}
+.mat-grid-tile-content{
+    display: block;
+    align-items: flex-start;
+    width:100%;
+    height: 100%;
+} 

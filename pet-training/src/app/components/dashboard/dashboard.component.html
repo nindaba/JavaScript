@@ -1,24 +1,5 @@
 
-<div class="container" align="center">
-    <header>
-        <mat-toolbar>
-            <span >
-                Pet Training
-            </span>
-            <div class="spacer">
-                <mat-form-field>
-                    <input matInput type="text" [(ngModel)]="search" placeholder="/search">
-                </mat-form-field>
-            </div>
-            <a mat-button  routerLink="/add-pet">
-                Add Pet
-            </a>
-            <a mat-button routerLink="/add-trainer">
-                Add Trainer
-            </a>
-        </mat-toolbar>
-        
-    </header>
+<div class="container" align="center">    
     <mat-grid-list cols="3" rowHeight="250px" >
         <mat-grid-tile [rowspan]="2" *ngFor="let pet of pets">
             <app-pet-card [pet]="pet"></app-pet-card>
