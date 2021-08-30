@@ -1,0 +1,9 @@
+.card-grid{
+    max-width: 80%;
+}
+.spacer{
+    flex: 1 1 auto;
+}
+header{
+    padding:5px;
+}
