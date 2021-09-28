@@ -1,0 +1,11 @@
+<div class="card">
+    <h2 class="card-title">{{category.name}}</h2>
+    <img class="card-image" [src]="category.image">
+    <div class="card-content">
+        <mat-icon color="primary" *ngIf="category.description">notes</mat-icon>
+        <p>{{category.description}}</p>
+    </div>
+    <div class="card-footer">
+        <button mat-flat-button [routerLink]="['/category',category.id]"  color="primary">View Items</button>
+    </div>
+</div>

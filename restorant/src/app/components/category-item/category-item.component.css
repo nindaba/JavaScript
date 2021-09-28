@@ -1,0 +1,23 @@
+.custom-input{
+    border: 1px solid #E0E0E0;
+    min-width: 200px;
+    width: 300px;
+    max-width: 400px;
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-family: Roboto;
+
+}
+.spacer{
+    flex: 1 1 auto;
+}
+.custom-input:focus{
+    border: 2px solid #bdc0da; 
+    border-radius: 5px;
+    outline-style: none;
+    /* border: 2px solid rgba(58, 120, 255, 0.14); */
+}
+input{
+    margin-left: 2%;
+}

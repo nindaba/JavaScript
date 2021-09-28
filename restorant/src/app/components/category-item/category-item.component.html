@@ -1,0 +1,20 @@
+<div fxLayout="column">
+    <mat-toolbar>
+        <span>{{categoryItems.name||'Categories'}}</span>
+        <div class="spacer"></div>
+        <input placeholder="Search" class="custom-input" type="text">
+        <div class="spacer"></div>
+    </mat-toolbar>
+    <div >
+        <div fxLayout = "row wrap" fxLayoutAlign="center none" *ngIf="!categoryItems.name">
+            <category-card 
+            *ngFor="let categoryItem of categories" [category]="categoryItem">
+            </category-card>
+        </div>
+        <div fxLayout = "row wrap" fxLayoutAlign="center none" *ngIf="categoryItems.name">
+            <item-card 
+            *ngFor="let item of categoryItems.items" [item]="item">
+            </item-card>
+        </div>
+    </div>
+  </div>

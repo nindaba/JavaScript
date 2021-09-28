@@ -1,0 +1,19 @@
+<div class="basket-item">
+    <p class="basket-item-title">{{item.name}}</p>
+    <div fxLayout="row" fxLayoutAlign="none center">
+        <div fxFLex="30">
+            <img class="basket-item-image" [src] = "item.images[0]">
+        </div>
+        <div fxFLex="60" class="description">
+            Price: {{item.price}} zloty <br>
+            x{{item.count}} <br>
+            Total: {{item.count*item.price|number:'.2'}} zloty 
+        </div>
+        <div fxFlex="8" class="actions">
+            <button mat-icon-button>
+                <mat-icon color="warn" (click)="remove()">delete</mat-icon>
+            </button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+</div>
