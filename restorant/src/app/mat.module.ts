@@ -7,6 +7,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import {MatDividerModule} from '@angular/material/divider';
 import {MatBadgeModule} from '@angular/material/badge'
 import { ScrollingModule } from '@angular/cdk/scrolling'
+import {MatStepperModule} from '@angular/material/stepper'
 
 @NgModule({
     exports: [
@@ -17,7 +18,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling'
         MatGridListModule,
         MatDividerModule,
         MatBadgeModule,
-        ScrollingModule
+        ScrollingModule,
+        MatStepperModule
     ]
   })
   export class MatModule { }

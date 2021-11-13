@@ -19,6 +19,7 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { BasketItemComponent } from './components/basket-item/basket-item.component';
 import { BasketServiceService } from './services/basket-service.service';
+import { OrdersComponent } from './components/orders/orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { BasketServiceService } from './services/basket-service.service';
     ItemCardComponent,
     BasketComponent,
     BasketItemComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

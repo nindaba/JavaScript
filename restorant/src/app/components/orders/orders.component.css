@@ -1,0 +1,4 @@
+.status-control{
+    display: flex;
+    flex-direction: column;
+}
