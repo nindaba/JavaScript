@@ -14,7 +14,7 @@ export class BasketItemComponent implements OnInit {
     this.item = {
       id: '',
       name: '',
-      images: [],
+      image: '',
       description: '',
       category:'',
       price: 0,

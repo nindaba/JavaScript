@@ -1,25 +1,22 @@
 <div class="header">
     <mat-toolbar class="toolbar">
-        <span class="logo" [routerLink]="['']" routerLinkActive="router-link-active" >
+        <span class="logo" [routerLink]="['category']" >
             <mat-icon>local_dining</mat-icon>
             <h1>Yadlings</h1>
         </span>
         <mat-divider [vertical]="true"></mat-divider>
         <div class="spacer"></div>
         <nav class="navigations">
-            <a class="nav-buttons" mat-icon-button (click)="hideBasketShow()" matBadge="4" matBadgeSize="small" [matBadgeHidden]="isBasketShown"><mat-icon>local_mall</mat-icon></a>
-            <a class="nav-buttons" mat-link-button router-link="/">Orders</a>
-            <a class="nav-buttons" mat-link-button router-link="/">Login</a>
-            <a class="nav-buttons" mat-link-button>Register</a>
-        </nav>
+            <a class="nav-button" mat-icon-button   matBadgeSize="small" [routerLink]="['orders']"><mat-icon>local_mall</mat-icon></a>
+            <div class="guest-user" *ngIf="!userService.isLoggedIn">
+                <span class="nav-button" mat-flat-button [routerLink]="['login']">Login</span>
+                <span class="nav-button" mat-flat-button>Sign-up</span>
+            </div>
+            <div class="user" *ngIf="userService.isLoggedIn">
+                <span class="nav-button">{{userService.username}}</span>
+                <span class="nav-button" (click)="userService.logout()" mat-flat-button>Logout</span>
+            </div>
+        </nav> 
     </mat-toolbar>
 </div>
-<div fxLayout="row" class="content">
-    <div fxFlex="73">
-        <router-outlet></router-outlet>
-    </div>
-    <div  fxFlex="25" *ngIf="isBasketShown">
-        <basket ></basket>
-    </div>
-    
-</div>
+<router-outlet></router-outlet>

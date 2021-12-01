@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CategoryItem } from '../models/category-item.model';
 import { Category } from '../models/category.model';
-import { CATEGORY, CATEGORY_ITEM } from './api.urls.ts/item-service.url';
+import { RestorantApis} from './restorant.apis';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,9 @@ export class CategoryServiceService {
   constructor(private http : HttpClient) { }
 
   getCategories(): Observable<Category[]>{
-    return this.http.get<Category[]>(CATEGORY);
+    return this.http.get<Category[]>(RestorantApis.CATEGORY);
   }
   getCategoryItems(id:string){
-    return this.http.get<CategoryItem>(CATEGORY_ITEM(id));
+    return this.http.get<CategoryItem>(RestorantApis.CATEGORY_ITEMS(id));
   }
 }

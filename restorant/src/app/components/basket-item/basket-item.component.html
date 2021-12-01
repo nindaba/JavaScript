@@ -1,15 +1,15 @@
 <div class="basket-item">
     <p class="basket-item-title">{{item.name}}</p>
     <div fxLayout="row" fxLayoutAlign="none center">
-        <div fxFLex="30">
-            <img class="basket-item-image" [src] = "item.images[0]">
+        <div fxFlex="40">
+            <img class="basket-item-image" [src] = "item.image">
         </div>
-        <div fxFLex="60" class="description">
-            Price: {{item.price}} zloty <br>
+        <div fxFlex="40" class="description">
+            Price: {{item.price}} zloty<br>
             x{{item.count}} <br>
             Total: {{item.count*item.price|number:'.2'}} zloty 
         </div>
-        <div fxFlex="8" class="actions">
+        <div fxFlex="18" class="actions">
             <button mat-icon-button>
                 <mat-icon color="warn" (click)="remove()">delete</mat-icon>
             </button>

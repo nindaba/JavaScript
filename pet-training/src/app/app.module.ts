@@ -33,6 +33,7 @@ import { TrainerService } from './services/trainer.service';
 import { PetDetailsComponent } from './components/pet-details/pet-details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SearchService } from './services/search.service';
+import { CardContentStyleDirective } from './directives/card-content-style.directive';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { SearchService } from './services/search.service';
     PersonFormComponent,
     TrainerFormComponent,
     PetDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CardContentStyleDirective
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,18 @@
 <div class="card">
-    <h2 class="card-title">{{category.name}}</h2>
-    <img class="card-image" [src]="category.image">
-    <div class="card-content">
-        <mat-icon color="primary" *ngIf="category.description">notes</mat-icon>
-        <p>{{category.description}}</p>
-    </div>
+    <img class="card-image skeleton" [src]="category.image">
     <div class="card-footer">
-        <button mat-flat-button [routerLink]="['/category',category.id]"  color="primary">View Items</button>
+        <div style="display:flex;align-items:center">
+            <label>{{category.name}}</label>
+            <span style="flex-grow: 1;"></span>
+            <span>
+                <mat-icon color="primary">star</mat-icon>
+            </span>
+            <label for="mat-icon">3.2</label>
+        </div>
+        <button mat-flat-button [routerLink]="[category.id]"  color="primary">View Items</button>
+        <button *ngIf="isAdmin" mat-icon-button [routerLink]="['/edit-category',category.id]"  color="primary" class="edit">
+            <mat-icon>edit</mat-icon>
+            Edit
+        </button>
     </div>
 </div>

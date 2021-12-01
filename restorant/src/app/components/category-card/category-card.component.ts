@@ -29,5 +29,7 @@ export class CategoryCardComponent implements OnInit {
   viewItems(){
     this.router.navigate(['category',this.category.id]);
   }
-
+  get isAdmin():Boolean{
+    return this.router.url.startsWith("/admin");
+  }
 }

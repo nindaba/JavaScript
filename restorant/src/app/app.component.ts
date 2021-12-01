@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'restorant';
-  //TODO change to false after working on basket
-  isBasketShown: boolean= true;
-  hideBasketShow(){
-    this.isBasketShown = !this.isBasketShown;
-  }
+  constructor(public userService:UserService){}
+
+  //We need this for our template
+
+  //userService.isLoggedIn;
+  //userService.logout();
+  //userService.username;
 }
