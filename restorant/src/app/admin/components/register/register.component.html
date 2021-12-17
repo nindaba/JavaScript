@@ -3,7 +3,7 @@
     <div>
         <form [formGroup]="registerForm" (submit)="register()">
             <img class="image" [src]="image">
-            <input type="file"  hidden="true" (change)="imagePicked($event)" accept="image/jpeg" #picker>
+            <input type="file"  hidden="true" (change)="imagePicked($event)" accept="image/jpeg,image/png" #picker>
             <button mat-button (click)="picker.click()" type="button" color="primary" style="width: 200px;">Choose Image</button>
             <custom-input 
             formControlName="name" 

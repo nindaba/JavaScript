@@ -1,3 +1,2 @@
-let ar = {
-a:1,b:2,c:3}
-console.log([...ar])
+let a = true && false || true
+console.log(a)

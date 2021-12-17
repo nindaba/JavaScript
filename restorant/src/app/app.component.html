@@ -7,6 +7,7 @@
         <mat-divider [vertical]="true"></mat-divider>
         <div class="spacer"></div>
         <nav class="navigations">
+<<<<<<< HEAD
             <a class="nav-button" mat-icon-button   matBadgeSize="small" [routerLink]="['orders']"><mat-icon>local_mall</mat-icon></a>
             <div class="guest-user" *ngIf="!userService.isLoggedIn">
                 <span class="nav-button" mat-flat-button [routerLink]="['login']">Login</span>
@@ -17,6 +18,13 @@
                 <span class="nav-button" (click)="userService.logout()" mat-flat-button>Logout</span>
             </div>
         </nav> 
+=======
+            <a class="nav-buttons" mat-icon-button (click)="hideBasketShow()" matBadge="4" matBadgeSize="small" [matBadgeHidden]="isBasketShown"><mat-icon>local_mall</mat-icon></a>
+            <a class="nav-buttons" mat-link-button router-link="/orders">Orders</a>
+            <a class="nav-buttons" mat-link-button router-link="/">Login</a>
+            <a class="nav-buttons" mat-link-button>Register</a>
+        </nav>
+>>>>>>> 4c912d4b4a0ea5543ca0d17f8e5f03b6e1fa37ec
     </mat-toolbar>
 </div>
 <router-outlet></router-outlet>

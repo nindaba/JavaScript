@@ -17,6 +17,7 @@ import { ForCategoriesItemsDirective } from './directives/for-categories-items.d
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { BasketItemComponent } from './components/basket-item/basket-item.component';
 import { BasketServiceService } from './services/basket-service.service';
+<<<<<<< HEAD
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OrderViewModule } from './order-view/order-view.module';
 import { CategorySkeletonComponent } from './skeletons/category-skeleton/category-skeleton.component';
@@ -25,6 +26,9 @@ import { UserService } from './services/user.service';
 import { TokenInterceptor } from './token-interceptor.interceptor';
 import { CommonModule } from '@angular/common';
 // import { CustomInputComponent } from './components/custom-input/custom-input.component';
+=======
+import { OrdersComponent } from './components/orders/orders.component';
+>>>>>>> 4c912d4b4a0ea5543ca0d17f8e5f03b6e1fa37ec
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +38,13 @@ import { CommonModule } from '@angular/common';
     ForCategoriesItemsDirective,
     ItemCardComponent,
     BasketItemComponent,
+<<<<<<< HEAD
     NotFoundComponent,
     CategorySkeletonComponent,
     // CustomInputComponent, 
+=======
+    OrdersComponent,
+>>>>>>> 4c912d4b4a0ea5543ca0d17f8e5f03b6e1fa37ec
   ],
   imports: [
     BrowserModule,

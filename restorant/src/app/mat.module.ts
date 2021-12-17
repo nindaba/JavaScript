@@ -5,6 +5,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import {MatDividerModule} from '@angular/material/divider';
+<<<<<<< HEAD
 import {MatBadgeModule} from '@angular/material/badge';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatSnackBarModule } from '@angular/material/snack-bar'
@@ -15,6 +16,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CustomInputComponent } from "./components/custom-input/custom-input.component";
 import { FormControl, FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+=======
+import {MatBadgeModule} from '@angular/material/badge'
+import { ScrollingModule } from '@angular/cdk/scrolling'
+import {MatStepperModule} from '@angular/material/stepper'
+>>>>>>> 4c912d4b4a0ea5543ca0d17f8e5f03b6e1fa37ec
 
 @NgModule({
     imports:[
@@ -31,6 +37,7 @@ import { CommonModule } from "@angular/common";
         MatDividerModule,
         MatBadgeModule,
         ScrollingModule,
+<<<<<<< HEAD
         MatSnackBarModule,
         FlexLayoutModule,
         MatStepperModule,
@@ -39,6 +46,9 @@ import { CommonModule } from "@angular/common";
     ],
     declarations: [
       CustomInputComponent
+=======
+        MatStepperModule
+>>>>>>> 4c912d4b4a0ea5543ca0d17f8e5f03b6e1fa37ec
     ]
   })
   export class MatModule { }
